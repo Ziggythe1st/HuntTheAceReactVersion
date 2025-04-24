@@ -26,3 +26,7 @@ dist-ssr
 # React-specific
 build/
 .env
+
+# Vite-specific
+.vite
+*.preview.html

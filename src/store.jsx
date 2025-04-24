@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import scoreReducer from "../features/scoreSlice";
-import roundsReducer from "../features/roundSlice";
+import cardReducer from "../features/cardSlice";
+import gameReducer from "../features/gameSlice";
 
 export const store = configureStore({
   reducer: {
-    score: scoreReducer,
-    rounds: roundsReducer,
+    cards: cardReducer,
+    game: gameReducer,
   },
 });
