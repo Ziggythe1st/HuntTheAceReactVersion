@@ -17,13 +17,19 @@ const cardSlice = createSlice({
     flipCard(state, action) {
       const id = action.payload;
       const card = state.cards.find((c) => c.id === id);
-      if (card) card.isFlipped = true;
+      if (card) card.isFlipped = false;
     },
-    resetCards(state) {
-      state.cards.forEach((c) => (c.isFlipped = false));
+    hideAllCards(state) {
+      state.cards.forEach((c) => (c.isFlipped = true));
+    },
+    revealAllCards(state) {
+      state.cards.forEach((c) => {
+        c.isFlipped = false;
+      });
     },
   },
 });
 
-export const { setCards, flipCard, resetCards } = cardSlice.actions;
+export const { setCards, flipCard, resetCards, hideAllCards, revealAllCards } =
+  cardSlice.actions;
 export default cardSlice.reducer;
