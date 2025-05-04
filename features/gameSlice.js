@@ -1,5 +1,7 @@
 // src/features/gameSlice.js
 import { createSlice } from "@reduxjs/toolkit";
+import { calculateScore } from "../helpers/calculateScore";
+import { ACE_ID } from "../helpers/gameConfig";
 
 const initialState = {
   score: 0,
@@ -22,9 +24,6 @@ const gameSlice = createSlice({
       state.statusMessage = "Shuffling...";
       state.cardsRevealed = false;
     },
-    endRound(state) {
-      state.round++;
-    },
     startNewRound(state) {
       state.round += 1;
       state.cardsRevealed = false;
@@ -46,11 +45,12 @@ const gameSlice = createSlice({
     },
     checkCardChoice(state, action) {
       const clickedId = action.payload;
-      const aceId = 4; // You can make this dynamic later if needed
+      const aceId = ACE_ID; // You can make this dynamic later if needed
 
       if (clickedId === aceId) {
+        const scoreToAdd = calculateScore(state.round);
         state.statusMessage = "🎯 Hit!! - Well Done!";
-        state.score += 100; // You can adjust this depending on round
+        state.score += scoreToAdd;
       } else {
         state.statusMessage = "💔 Missed! Try again next round.";
       }
@@ -62,7 +62,6 @@ const gameSlice = createSlice({
 
 export const {
   startGame,
-  endRound,
   startNewRound,
   updateScore,
   setStatusMessage,

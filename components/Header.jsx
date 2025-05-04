@@ -1,17 +1,35 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { startGame, resetGame } from "../features/gameSlice";
-import { hideAllCards } from "../features/cardSlice";
+import {
+  revealAllCards,
+  hideAllCards,
+  setShuffleCards,
+} from "../features/cardSlice";
+import { shuffleCards } from "../helpers/shuffleCards";
 
 const Header = () => {
   const dispatch = useDispatch();
+  const cards = useSelector((state) => state.cards.cards);
   const gameInProgress = useSelector((state) => state.game.gameInProgress);
   const gameOver = useSelector((state) => state.game.gameOver);
 
   const handleStartGame = () => {
     dispatch(resetGame());
     dispatch(startGame());
-    dispatch(hideAllCards());
+
+    // 👁️ Step 1: show all cards face-up
+    dispatch(revealAllCards());
+
+    // ⏳ Step 2: after a short delay, hide and shuffle
+    setTimeout(() => {
+      dispatch(hideAllCards());
+
+      setTimeout(() => {
+        const shuffled = shuffleCards(cards);
+        dispatch(setShuffleCards(shuffled));
+      }, 300); // allow DOM to reflect hide before shuffle
+    }, 1000); // 1s delay before hiding after reveal
   };
 
   return (
