@@ -15,6 +15,16 @@ A modern reimagining of the classic "Hunt the Ace" game, originally built with H
 
 ---
 
+## 🎮 Features
+
+- Flip animation and shuffle effects
+- Round-based scoring system
+- Keyboard & screen reader accessible
+- Responsive layout (mobile-first)
+- Clean, modern UI
+
+---
+
 ## 🚀 Getting Started
 
 Clone the repo and run the development server:

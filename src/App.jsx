@@ -14,7 +14,7 @@ function App() {
   }, [dispatch]);
 
   return (
-    <div className="flex flex-col items-center p-4">
+    <div className="container mx-auto flex flex-col items-center p-4">
       <Header />
       <CardGrid />
       <StatusBar />

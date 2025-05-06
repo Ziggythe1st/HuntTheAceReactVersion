@@ -33,11 +33,18 @@ const Header = () => {
   };
 
   return (
-    <header className="flex flex-col items-center mb-6">
+    <header className="flex flex-col items-center mb-6 w-full max-w-sm px-4">
       <h1 className="text-4xl font-bold mb-4">Hunt the Ace</h1>
       <button
         onClick={handleStartGame}
-        className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded"
+        className="bg-blue-600 hover:bg-blue-700 active:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-300 text-white font-bold py-2 px-6 rounded transition disabled:opacity-50"
+        aria-label={
+          gameOver
+            ? "Play again"
+            : gameInProgress
+            ? "Restart game"
+            : "Start game"
+        }
       >
         {gameOver
           ? "Play Again"

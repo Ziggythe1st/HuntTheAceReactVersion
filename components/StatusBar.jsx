@@ -7,7 +7,7 @@ function StatusBar() {
   const round = useSelector((state) => state.game.round);
 
   return (
-    <div className="mt-6 text-center font-semibold text-lg space-y-1">
+    <div className="mt-6 text-center font-semibold text-base sm:text-lg space-y-1">
       <p>🎯 Score: {score}</p>
       <p>🌀 Round: {round} / 4</p>
       <p className="text-blue-700 italic">{statusMessage}</p>
